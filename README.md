@@ -1,31 +1,138 @@
-# Room-Booking-Chatbot
+# Room Booking System with ML-powered Chatbot
 
-## Demo
+A modern room booking system built with the MERN stack (MongoDB, Express.js, React, Node.js) and featuring a machine learning-powered chatbot for intelligent assistance.
 
-![Room booking chatbot - Demo](https://github.com/heflinstephenraj/Room-Booking-Chatbot/blob/main/demo.gif?raw=true)
+## Features
 
-<br><br>
+- **User-friendly Interface**: Intuitive UI for browsing and booking rooms
+- **Room Management**: View room details, capacity, amenities, and availability
+- **Booking System**: Book rooms with date and time selection
+- **My Bookings**: View and manage your bookings
+- **Email Notifications**: Receive booking confirmations via email
+- **ML-powered Chatbot**: Get assistance with natural language processing
+- **Responsive Design**: Works on desktop and mobile devices
 
-### Tutorial
+## Tech Stack
 
-Download or Clone this repo on your local machine
+### Backend
+- **Node.js & Express.js**: Server and API
+- **MongoDB & Mongoose**: Database and ODM
+- **Natural**: Natural language processing for the chatbot
+- **Nodemailer**: Email notifications
 
-1. Create your IBM Cloud Account at https://cloud.ibm.com/registration If you already have an IBM Cloud Account, login here https://cloud.ibm.com/login
-2. Provision your IBM Watson Assistant at https://cloud.ibm.com/catalog/services/watson-assistant Name your IBM Watson Assistant service and Click on create.
-3. Click on launch Watson Assitant to open the tool.
-4. Then Click on "Create assistant" Button to create your IBM Watson Assistant.
-5. Name your assistant. If you want, you can give description for ypur assistant.
-6. Click on "Add an actions or dialog skill"
-7. Go to "upload skill" tab and choose the <a href="https://github.com/heflinstephenraj/Room-Booking-Chatbot/blob/main/skill-Room-Booking.json">skill-Room-Booking.json</a>
-8. We completed the chatbot. Let's set our IBM Cloud Function to send an email when someone sends a booking request. Go to https://cloud.ibm.com/functions/actions and Click on "Create" Button and click on "Action"
-9. "This project has been moved to a new repository."
-10. Prove a name for your Action. Leave "Enclosing Package" as default. And Choose python 3.7 as your runtime. Then Finally, Click on "Create".
-11. You will see a Text area to enter your python code. Just copy the python from <a href="https://github.com/heflinstephenraj/Room-Booking-Chatbot/blob/main/IBM_Cloud_Function.py">IBM_Cloud_Function.py</a> and past it in the text area of IBM Cloud Funtion.
-12. Now go to your Google Account Security at https://myaccount.google.com/security. Enable 2 step verification. Then Go to "App password" under "Signing in to Google".
-13. Select "Mail" as app and "Other" as "Other" as device. Enter any name for your custom device. example: IBM Cloud Fumction
-14. Copy the app password and back to our IBM Cloud Function. Enter the app password in the python program on 10 line.
-15. Click on "Endponits" from the side bar of IBM Cloud Function Action Click on "Enable as Web Action" and Copy the URL.
-16. Come Back to your IBM Watson Assistant. Go to "Option > Webhooks" from the side bar of your IBM Watson Assistant. Then past the URL (Note: Add .json at the end of the URL).
+### Frontend
+- **React**: UI library
+- **React Router**: Navigation
+- **Axios**: API requests
+- **CSS3**: Styling
 
-That's it. We have successfully developed our AI Room Booking Chatbot.
-If you have any questions, Contact me at https://www.heflin.dev/hello
+## Project Structure
+
+```
+Room-Booking-System/
+├── backend/               # Backend code
+│   ├── config/           # Configuration files
+│   ├── controllers/      # Route controllers
+│   ├── models/           # Mongoose models
+│   ├── routes/           # API routes
+│   └── utils/            # Utility functions
+├── frontend/             # Frontend code
+│   ├── public/           # Static files
+│   └── src/              # React source code
+│       ├── components/   # React components
+│       ├── pages/        # Page components
+│       ├── context/      # React context
+│       └── utils/        # Utility functions
+└── ml-model/             # Machine learning model for chatbot
+```
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
+- npm or yarn
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a `.env` file based on `.env.example`:
+   ```
+   cp .env.example .env
+   ```
+
+4. Update the `.env` file with your MongoDB URI and email settings.
+
+5. Start the backend server:
+   ```
+   npm start
+   ```
+   For development with auto-reload:
+   ```
+   npm run dev
+   ```
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Start the frontend development server:
+   ```
+   npm start
+   ```
+
+4. The application will be available at `http://localhost:3000`
+
+## API Endpoints
+
+### Rooms
+- `GET /api/rooms` - Get all rooms
+- `GET /api/rooms/:id` - Get a specific room
+- `POST /api/rooms` - Create a new room
+- `PUT /api/rooms/:id` - Update a room
+- `DELETE /api/rooms/:id` - Delete a room
+- `GET /api/rooms/:id/availability` - Check room availability
+
+### Bookings
+- `GET /api/bookings` - Get all bookings
+- `GET /api/bookings/:id` - Get a specific booking
+- `POST /api/bookings` - Create a new booking
+- `PUT /api/bookings/:id` - Update a booking
+- `DELETE /api/bookings/:id` - Cancel a booking
+- `GET /api/bookings/user/:email` - Get bookings by user email
+
+### Chatbot
+- `POST /api/chatbot/message` - Send a message to the chatbot
+- `GET /api/chatbot/history/:sessionId` - Get chat history
+
+## ML Chatbot
+
+The chatbot uses natural language processing to understand user intent and provide assistance with room booking. It can help with:
+
+- Finding available rooms
+- Booking a room
+- Checking booking status
+- Cancelling bookings
+- Answering general questions
+
+## License
+
+MIT
